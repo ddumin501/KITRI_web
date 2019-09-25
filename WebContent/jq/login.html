@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- AJAX로 될때 한 소스코드에 ajax script선언 두번이라서 지움
+ <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script>
+$(function(){
+	$("button[type=button]").click(function(){
+		//alert("가입버튼이 클릭되었습니다.");
+		var $menuArr = $("header > nav > ul > li > a");
+		for(var i = 0 ; i <$menuArr.length;i++){
+			var aObj = $menuArr[i];
+			if($(aObj).attr('href') == 'join.html'){
+				//alert($(aObj).html()); //가입
+				
+				//click이벤트 강제 발생 시키기
+				$(aObj).trigger('click');
+				break;
+			}
+		}
+	});
+	
+	//$("form").submit(function(){
+	//	alert("submit이벤트 발생");
+	//	$(this).attr('action', '../a.jsp');
+	//});
+	
+	$("button[type=submit]").click(function(){
+		alert("submit버튼에서 click이벤트 발생");		
+		//$("form").attr('action', '../a.jsp');
+		//$("form").submit(); //required점검 x
+		//기본이벤트 핸들러 처리
+	});
+	$("form").submit(function(){
+		alert("form에서 submit이벤트발생");
+		$("form").attr('action', '../a.jsp');
+		//기본이벤트 핸들러가 할일: action속성값에 해당하는 URL을 요청한다.(default:현재의 URL)
+		//return false; //기본이벤트 막기
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<form>
+	ID : <input type="text" name="id" placeholder="아이디를 입력하세요." required><br>
+	비밀번호 : <input type="password" name="pwd" placeholder="비밀번호를 입력하세요." required><br>
+	<button type="submit">로그인</button>
+	<button type="button">가입</button>
+</form>
+</body>
+</html>
