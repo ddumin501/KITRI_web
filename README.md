@@ -1,4 +1,4 @@
 # KITRI_web
--javascript
--jquery
--html5
+- javascript
+- jquery
+- html5
